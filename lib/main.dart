@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quran/sura_detels.dart';
 
-import 'home.dart';
+import 'home/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       routes: {
 
         HomeScreen.routeName:(context)=>HomeScreen(),
+        suraDetels.routeName:(context) =>suraDetels(),
         }
     );
   }
