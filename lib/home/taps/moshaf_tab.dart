@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:quran/home/sura_model.dart';
-import 'package:quran/sura_detels.dart';
+import 'package:quran/home/detels/sura_detels.dart';
+import 'package:quran/home/models/sura_model.dart';
 
 class moshafhTab extends StatelessWidget {
    moshafhTab ({super.key});
@@ -23,15 +23,11 @@ List<String>sura=["الفاتحه","البقرة","آل عمران","النسا�
       children: [
         Image(image: AssetImage('assets/images/Home_logo.png'),height: 227,),
         Divider(
-          thickness: 3,
-          color: Color(0xffB7935F),
+
         ),
-        Text('Sura_Name',textAlign: TextAlign.center,style:GoogleFonts.elMessiri(
-          fontSize:25,fontWeight:FontWeight.w700,
-        ) ,),
+        Text('Sura_Name',style: Theme.of(context).textTheme.bodyLarge,textAlign: TextAlign.center,),
         Divider(
-          thickness: 3,
-          color: Color(0xffB7935F),
+
         ),
         Expanded(
           child: ListView.separated(
@@ -52,9 +48,8 @@ endIndent: 50,indent: 50,
 
 
               },
-              child: Center(child: Text(sura[index],style: GoogleFonts.elMessiri(
-                fontSize:30,fontWeight:FontWeight.w700,
-              ),)),
+              child: Center(child: Text(sura[index],style: Theme.of(context).textTheme.bodyLarge,
+              )),
             );
           },itemCount: sura.length,),
         )

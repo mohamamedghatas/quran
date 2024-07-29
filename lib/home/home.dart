@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:quran/home/ahageth_tab.dart';
-import 'package:quran/home/moshaf_tab.dart';
-import 'package:quran/home/radio_tab.dart';
-import 'package:quran/home/sepha_tab.dart';
-import 'package:quran/home/setinges_tab.dart';
+import 'package:provider/provider.dart';
+
+import 'package:quran/home/taps/ahageth_tab.dart';
+import 'package:quran/home/taps/moshaf_tab.dart';
+import 'package:quran/home/taps/radio_tab.dart';
+import 'package:quran/home/taps/sepha_tab.dart';
+import 'package:quran/home/taps/setinges_tab.dart';
+import 'package:quran/provider/my_provider.dart';
 class HomeScreen extends StatefulWidget {
   static const String routeName='Home';
    HomeScreen ({super.key});
@@ -18,20 +21,19 @@ int slectIndex=0;
 
   @override
   Widget build(BuildContext context){
+    var pro =Provider.of<MYprovider>(context);
     return Stack(
 fit: StackFit.expand,
       children:[
 
-        Image.asset('assets/images/main_bg.png',fit: BoxFit.fill,),
+        Image.asset(
+          pro.apptheme==ThemeMode.dark?"assets/images/home_dark.png"
+              : 'assets/images/main_bg.png',fit: BoxFit.fill,),
         Scaffold(
           backgroundColor: Colors.transparent,
 
         appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: Colors.transparent,
-          title: Text('islami',style:GoogleFonts.elMessiri(
-            fontSize:30,fontWeight:FontWeight.w700,
-          ) ,),
+          title: Text('islami'),
 
         ),
           bottomNavigationBar: BottomNavigationBar(
@@ -45,10 +47,8 @@ onTap: (Index){
               });
 
 },
-type: BottomNavigationBarType.fixed,
-selectedItemColor: Colors.black87,
-            unselectedItemColor: Colors.white,
-            backgroundColor: Color(0xffB7935F),
+
+
             items: [
               BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/moshaf_gold.png'),size: 30,),label: ''),
               BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/quran-quran-svgrepo-com.png'),size: 30,),label:'' ),
